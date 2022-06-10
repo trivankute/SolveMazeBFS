@@ -20,7 +20,7 @@ const findButton = document.getElementById('findButton')
 
 
 const BG_SIZE = 600
-const squareSize = 30
+const squareSize = 60
 const totalSquares = (BG_SIZE/squareSize)*2-1
 // let time = 100
 // let colorIndex = 0
@@ -153,6 +153,7 @@ findButton.onclick = () =>{
     let queue = []
     queue.push(startPoint)
     let stop=false
+
     // while(queue.length>0&&!stop)
     // {
     // let currNode = queue.shift()
@@ -182,7 +183,10 @@ findButton.onclick = () =>{
     // }
     // }
     let interval = setInterval(()=>{
-        if(queue.length>0&&!stop)
+        if(queue.length>0
+            &&
+            !stop
+            )
         {    let currNode = queue.shift()
             for(let i=0;i<4;i++)
             {
@@ -195,17 +199,15 @@ findButton.onclick = () =>{
                     continue
                 if(array[newNode.y][newNode.x]===0||array[newNode.y][newNode.x]===1||array[newNode.y][newNode.x]===3)
                     continue
-                if(array[newNode.y][newNode.x]===2){reach = true;
+                if(array[newNode.y][newNode.x]===2){reach=true;
                 mapArray[newNode.y][newNode.x]=currNode
                 stop=true;
                 break;
                 }
                 queue.push(newNode)
                 mapArray[newNode.y][newNode.x]=currNode
-                setTimeout(()=>{
-                    ctx.fillStyle = insideColor
-                    ctx.fillRect(newNode.x*squareSize,newNode.y*squareSize,squareSize,squareSize)
-                },20)
+                ctx.fillStyle = insideColor
+                ctx.fillRect(newNode.x*squareSize,newNode.y*squareSize,squareSize,squareSize)
                 array[newNode.y][newNode.x]=0
             }}
         else
@@ -231,7 +233,7 @@ findButton.onclick = () =>{
                     {
                         clearInterval(interval)
                     }
-                },100)
+                },50)
             }
             else
             {
@@ -239,7 +241,7 @@ findButton.onclick = () =>{
             }
         }
     }
-    ,100)
+    ,5)
 }
 
 // resetButton.onclick = () => {
