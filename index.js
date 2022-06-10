@@ -20,7 +20,7 @@ const findButton = document.getElementById('findButton')
 
 
 const BG_SIZE = 600
-const squareSize = 60
+const squareSize = 30
 const totalSquares = (BG_SIZE/squareSize)*2-1
 // let time = 100
 // let colorIndex = 0
@@ -241,7 +241,7 @@ findButton.onclick = () =>{
             }
         }
     }
-    ,5)
+    ,25)
 }
 
 // resetButton.onclick = () => {
